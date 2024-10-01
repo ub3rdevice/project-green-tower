@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.Windows;
 
 
 [ExecuteAlways] //this makes this script to work both in editor and in playmode
 public class NavigateLabel : MonoBehaviour
 {
+    [SerializeField] Color defaultColor = Color.white;
+    [SerializeField] Color blockedColor = Color.red;
     TextMeshPro label;
     Vector2Int coords = new Vector2Int();
+    Waypoint waypoint;
 
     void Awake()
     {
-        label = GetComponent<TextMeshPro>(); //preferably to cache this
+        label = GetComponent<TextMeshPro>(); //preferably to cache this   
+        waypoint = GetComponentInParent<Waypoint>();
         DisplayCoordsOnTile();
     }
 
@@ -25,7 +30,29 @@ public class NavigateLabel : MonoBehaviour
             DisplayCoordsOnTile();
             UpdateObjectName();
         }
+        ColorCoords();
+        SwitchLabels();
 
+    }
+
+    void SwitchLabels()
+    {
+        if(UnityEngine.Input.GetKeyDown(KeyCode.C))
+        {
+            label.enabled = !label.IsActive();
+        }
+    }
+
+    void ColorCoords()
+    {
+        if(waypoint.IsValidForPlacement)
+        {
+            label.color = defaultColor;
+        }
+        else
+        {
+            label.color = blockedColor;
+        }
     }
 
     void DisplayCoordsOnTile()

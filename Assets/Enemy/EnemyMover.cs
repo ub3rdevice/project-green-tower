@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class EnemyMover : MonoBehaviour
 {
@@ -8,10 +9,29 @@ public class EnemyMover : MonoBehaviour
     [SerializeField] [Range(0f,10f)] float mainSpeed = 1f;
 
     void Start()
-    {
+    {   
+        LookForPath();
+        returnToStartPos();
         StartCoroutine(FollowPath());
     }
     
+    void LookForPath()
+    {
+        path.Clear();
+
+        GameObject pathParent = GameObject.FindGameObjectWithTag("Path"); //better to not use any string references in a future
+
+        foreach(Transform child in pathParent.transform) //using Transform here due to empty gameobject has only Transform component
+        {
+            path.Add(child.GetComponent<Waypoint>());
+        }
+    }
+
+    void returnToStartPos()
+    {
+        transform.position = path[0].transform.position;
+    }
+
     IEnumerator FollowPath()
     {
         foreach(Waypoint waypoint in path)
@@ -30,5 +50,6 @@ public class EnemyMover : MonoBehaviour
             }
             
         }
+        Destroy(gameObject);
     }
 }

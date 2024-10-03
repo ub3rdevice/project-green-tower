@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
 
+[RequireComponent(typeof(Enemy))]
 public class EnemyMover : MonoBehaviour
 {
     [SerializeField] List<Waypoint> path = new List<Waypoint>();
@@ -13,7 +14,7 @@ public class EnemyMover : MonoBehaviour
     {   
         LookForPath();
         returnToStartPos();
-        StartCoroutine(FollowPath());
+        StartCoroutine(StartMovement());
     }
 
     void Start()
@@ -38,7 +39,13 @@ public class EnemyMover : MonoBehaviour
         transform.position = path[0].transform.position;
     }
 
-    IEnumerator FollowPath()
+    void FinishMovement()
+    {
+        enemy.PenaltyPlayer();
+        gameObject.SetActive(false); //adding object back to object pool instead of destroying it completely
+    }
+
+    IEnumerator StartMovement()
     {
         foreach(Waypoint waypoint in path)
         {   
@@ -56,7 +63,6 @@ public class EnemyMover : MonoBehaviour
             }
             
         }
-        enemy.PenaltyPlayer();
-        gameObject.SetActive(false); //adding object back to object pool instead of destroying it completely
+        FinishMovement();
     }
 }

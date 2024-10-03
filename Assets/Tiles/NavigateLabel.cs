@@ -7,6 +7,7 @@ using UnityEngine.Windows;
 
 
 [ExecuteAlways] //this makes this script to work both in editor and in playmode
+[RequireComponent(typeof(TextMeshPro))]
 public class NavigateLabel : MonoBehaviour
 {
     [SerializeField] Color defaultColor = Color.white;
@@ -30,7 +31,7 @@ public class NavigateLabel : MonoBehaviour
             DisplayCoordsOnTile();
             UpdateObjectName();
         }
-        ColorCoords();
+        SetLabelColor();
         SwitchLabels();
 
     }
@@ -43,7 +44,7 @@ public class NavigateLabel : MonoBehaviour
         }
     }
 
-    void ColorCoords()
+    void SetLabelColor()
     {
         if(waypoint.IsValidForPlacement)
         {
@@ -57,7 +58,7 @@ public class NavigateLabel : MonoBehaviour
 
     void DisplayCoordsOnTile()
     {
-        coords.x = Mathf.RoundToInt((transform.parent.position.x) / UnityEditor.EditorSnapSettings.move.x);
+        coords.x = Mathf.RoundToInt((transform.parent.position.x) / UnityEditor.EditorSnapSettings.move.x); // UnityEditor methods won't allow build to be compiled, we should either comment these lines or move this script to the "Editor" dir BEFORE compiling the build
         coords.y = Mathf.RoundToInt((transform.parent.position.z) / UnityEditor.EditorSnapSettings.move.z);
 
         //label.text = coords.x + "," + coords.y;

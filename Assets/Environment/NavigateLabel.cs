@@ -19,6 +19,7 @@ public class NavigateLabel : MonoBehaviour
     void Awake()
     {
         label = GetComponent<TextMeshPro>(); //preferably to cache this   
+        label.enabled = false;
         waypoint = GetComponentInParent<Waypoint>();
         DisplayCoordsOnTile();
     }
@@ -30,6 +31,7 @@ public class NavigateLabel : MonoBehaviour
         {
             DisplayCoordsOnTile();
             UpdateObjectName();
+            label.enabled = true;
         }
         SetLabelColor();
         SwitchLabels();

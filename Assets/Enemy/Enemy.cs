@@ -1,18 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] int resourceReward = 20;
+    [SerializeField] int resourcePenalty = 20;
+
+    ResourceStock resourceStock;
+
     void Start()
     {
-        
+        resourceStock = FindObjectOfType<ResourceStock>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RewardPlayer()
     {
-        
+        if(resourceStock == null) { return; }
+        resourceStock.AddResources(resourceReward);
+    }
+
+    public void PenaltyPlayer()
+    {
+        if(resourceStock == null) { return; }
+        resourceStock.ReduceResources(resourcePenalty);
     }
 }

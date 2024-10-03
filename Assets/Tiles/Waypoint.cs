@@ -5,7 +5,7 @@ using UnityEngine.Animations;
 
 public class Waypoint : MonoBehaviour
 {
-    [SerializeField] GameObject towerPrefab;
+    [SerializeField] Tower towerPrefab;
     [SerializeField] bool isValidForPlacement;
     public bool IsValidForPlacement { get { return isValidForPlacement; } } // fancy getter or getproperty to be precise
 
@@ -18,8 +18,8 @@ public class Waypoint : MonoBehaviour
    {
         if(isValidForPlacement)
         {
-            Instantiate(towerPrefab,transform.position,Quaternion.identity);
-            isValidForPlacement = false;
+            bool isPlaced = towerPrefab.CreateTower(towerPrefab, transform.position);
+            isValidForPlacement = !isPlaced;
         }
         
    }

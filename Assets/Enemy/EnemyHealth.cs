@@ -8,10 +8,16 @@ public class EnemyHealth : MonoBehaviour
 
     [SerializeField] int maxHP = 5;
     [SerializeField] int currentHP = 0;
+    Enemy enemy;
 
     void OnEnable()
     {
         setCurrentHP();
+    }
+
+    void Start()
+    {
+        enemy = GetComponent<Enemy>();
     }
 
     void Update()
@@ -41,5 +47,6 @@ public class EnemyHealth : MonoBehaviour
     void DestoyEnemy()
     {
         gameObject.SetActive(false); //adding object back to object pool instead of destroying it completely
+        enemy.RewardPlayer();
     }
 }

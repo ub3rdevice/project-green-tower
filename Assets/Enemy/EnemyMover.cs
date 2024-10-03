@@ -7,12 +7,18 @@ public class EnemyMover : MonoBehaviour
 {
     [SerializeField] List<Waypoint> path = new List<Waypoint>();
     [SerializeField] [Range(0f,10f)] float mainSpeed = 1f;
+    Enemy enemy;
 
     void OnEnable()
     {   
         LookForPath();
         returnToStartPos();
         StartCoroutine(FollowPath());
+    }
+
+    void Start()
+    {
+        enemy = GetComponent<Enemy>();
     }
     
     void LookForPath()
@@ -50,6 +56,7 @@ public class EnemyMover : MonoBehaviour
             }
             
         }
+        enemy.PenaltyPlayer();
         gameObject.SetActive(false); //adding object back to object pool instead of destroying it completely
     }
 }

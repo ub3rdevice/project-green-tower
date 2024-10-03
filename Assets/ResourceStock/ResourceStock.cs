@@ -40,6 +40,7 @@ public class ResourceStock : MonoBehaviour
 
         if (currentResourceAmount < 0)
         {
+            //game over
             ReloadLevel();
         }
     }

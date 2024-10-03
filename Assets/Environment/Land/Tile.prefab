@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 5605536684616766249}
   - component: {fileID: 6918164340537089600}
   - component: {fileID: 6107584544256518114}
-  - component: {fileID: 1476275384047222996}
+  - component: {fileID: 1742282662604220347}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 6918164340537089600}
   m_maskType: 0
---- !u!114 &1476275384047222996
+--- !u!114 &1742282662604220347
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

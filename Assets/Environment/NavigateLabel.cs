@@ -12,15 +12,20 @@ public class NavigateLabel : MonoBehaviour
 {
     [SerializeField] Color defaultColor = Color.white;
     [SerializeField] Color blockedColor = Color.red;
+    [SerializeField] Color exploredColor = Color.gray;
+    [SerializeField] Color PathColor = new Color(1f, 0.5f, 0f); //orange
     TextMeshPro label;
     Vector2Int coords = new Vector2Int();
-    Waypoint waypoint;
+    GridManager gridManager;
+    
 
     void Awake()
     {
+        gridManager = FindObjectOfType<GridManager>();
         label = GetComponent<TextMeshPro>(); //preferably to cache this   
         label.enabled = false;
-        waypoint = GetComponentInParent<Waypoint>();
+
+       
         DisplayCoordsOnTile();
     }
 
@@ -48,13 +53,27 @@ public class NavigateLabel : MonoBehaviour
 
     void SetLabelColor()
     {
-        if(waypoint.IsValidForPlacement)
+        if(gridManager == null) { return; }
+
+        Node node = gridManager.GetNode(coords);
+
+        if(node == null) { return; }
+
+        if(!node.isNavigable)
         {
-            label.color = defaultColor;
+            label.color = blockedColor;
+        }
+        else if(node.isPath)
+        {
+            label.color = PathColor;
+        }
+        else if(node.isExplored)
+        {
+            label.color = exploredColor;
         }
         else
         {
-            label.color = blockedColor;
+            label.color = defaultColor;
         }
     }
 

@@ -14495,6 +14495,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464276358716903946, guid: d52b5d17a6b77e0409de4f6161c62b49, type: 3}
   m_PrefabInstance: {fileID: 1475465780}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1483147995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1483147997}
+  - component: {fileID: 1483147996}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1483147996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483147995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5c95d2226db4c74d9a565ad286eeda0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  node:
+    coords: {x: 2, y: 1}
+    isNavigable: 1
+    isExplored: 0
+    isPath: 0
+--- !u!4 &1483147997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483147995}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 21.62012, y: 80.14491, z: -21.436615}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1488097366
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20297,6 +20346,14 @@ PrefabInstance:
       propertyPath: m_TextStyleHashCode
       value: -1183493901
       objectReference: {fileID: 0}
+    - target: {fileID: 8104811694498375166, guid: 71cfe6c04c676424ebf5f8b722763bbb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 208.80005
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104811694498375166, guid: 71cfe6c04c676424ebf5f8b722763bbb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 36.69995
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20435,3 +20492,4 @@ SceneRoots:
   - {fileID: 8391887971018646116}
   - {fileID: 4377304764970561847}
   - {fileID: 1883837549592650059}
+  - {fileID: 1483147997}

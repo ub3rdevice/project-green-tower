@@ -12,7 +12,7 @@ public class NavigateLabel : MonoBehaviour
 {
     [SerializeField] Color defaultColor = Color.white;
     [SerializeField] Color blockedColor = Color.red;
-    [SerializeField] Color exploredColor = Color.gray;
+    [SerializeField] Color exploredColor = Color.blue;
     [SerializeField] Color PathColor = new Color(1f, 0.5f, 0f); //orange
     TextMeshPro label;
     Vector2Int coords = new Vector2Int();

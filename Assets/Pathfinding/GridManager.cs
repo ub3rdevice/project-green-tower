@@ -7,6 +7,7 @@ public class GridManager : MonoBehaviour
 {
     [SerializeField] Vector2Int gridSize; //vector2int = grid ref with x axis and y axis
     Dictionary<Vector2Int, Node> grid = new Dictionary<Vector2Int, Node>();
+    public Dictionary<Vector2Int, Node> Grid { get { return grid; } }
     void Awake()
     {
         PopulateGrid();
@@ -30,7 +31,7 @@ public class GridManager : MonoBehaviour
             {
                 Vector2Int coords = new Vector2Int(x,y);
                 grid.Add(coords, new Node(coords, true));
-                Debug.Log(grid[coords].coords + " = " + grid[coords].isNavigable);
+                
             }
         }
     }

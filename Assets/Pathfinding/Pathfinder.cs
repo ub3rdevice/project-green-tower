@@ -73,7 +73,7 @@ public class Pathfinder : MonoBehaviour
     {
         startNode.isNavigable = true;
         endNode.isNavigable = true;
-        
+
         worldNodes.Clear();
         reachedNodes.Clear();
 
@@ -130,4 +130,10 @@ public class Pathfinder : MonoBehaviour
         }
         return false;
     }
+
+    public void NotifyReceivers()
+    {
+        BroadcastMessage("RecalcPath", SendMessageOptions.DontRequireReceiver);
+    }
+
 }

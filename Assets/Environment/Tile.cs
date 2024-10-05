@@ -41,9 +41,13 @@ public class Tile : MonoBehaviour
    {
         if(gridManager.GetNode(coords).isNavigable && !pathfinder.willBlock(coords))
         {
-            bool isPlaced = towerPrefab.CreateTower(towerPrefab, transform.position);
-            isValidForPlacement = !isPlaced;
-            gridManager.BlockNode(coords);
+            bool isSuccessfulPlacement = towerPrefab.CreateTower(towerPrefab, transform.position);
+            
+            if (isSuccessfulPlacement)
+            {
+                gridManager.BlockNode(coords);
+                pathfinder.NotifyReceivers();
+            }
         }
    }
 }

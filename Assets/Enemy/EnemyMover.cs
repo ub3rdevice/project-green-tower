@@ -14,7 +14,7 @@ public class EnemyMover : MonoBehaviour
 
     void OnEnable()
     {   
-        LookForPath();
+        RecalcPath();
         returnToStartPos();
         StartCoroutine(StartMovement());
     }
@@ -26,7 +26,7 @@ public class EnemyMover : MonoBehaviour
         enemy = GetComponent<Enemy>();
     }
     
-    void LookForPath()
+    void RecalcPath()
     {
         path.Clear();
         

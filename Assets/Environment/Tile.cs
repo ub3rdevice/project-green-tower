@@ -10,6 +10,7 @@ public class Tile : MonoBehaviour
     public bool IsValidForPlacement { get { return isValidForPlacement; } } // fancy getter or getproperty to be precise
 
     GridManager gridManager;
+    Pathfinder pathfinder;
     Vector2Int coords = new Vector2Int();
 
     // public bool GetIsValidForPlacement() // good old getter
@@ -19,6 +20,7 @@ public class Tile : MonoBehaviour
 
     void Awake()
     {
+        pathfinder = FindObjectOfType<Pathfinder>();
         gridManager = FindObjectOfType<GridManager>();
     }
 
@@ -37,11 +39,11 @@ public class Tile : MonoBehaviour
 
    void OnMouseDown() 
    {
-        if(isValidForPlacement)
+        if(gridManager.GetNode(coords).isNavigable && !pathfinder.willBlock(coords))
         {
             bool isPlaced = towerPrefab.CreateTower(towerPrefab, transform.position);
             isValidForPlacement = !isPlaced;
+            gridManager.BlockNode(coords);
         }
-        
    }
 }

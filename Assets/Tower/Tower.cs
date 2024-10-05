@@ -5,6 +5,12 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     [SerializeField] int cost = 20;
+    [SerializeField] float buildTime = 0.25f;
+
+    void Start() {
+        StartCoroutine(Build());
+    }
+
     public bool CreateTower(Tower tower, Vector3 position)
     {
         ResourceStock resourceStock = FindObjectOfType<ResourceStock>();
@@ -21,5 +27,20 @@ public class Tower : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    IEnumerator Build()
+    {   
+        foreach(Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+
+        foreach(Transform child in transform)
+        {
+            yield return new WaitForSeconds(buildTime);
+            child.gameObject.SetActive(true);
+
+        }
     }
 }

@@ -1962,8 +1962,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb2a702e026227c418ac73057e36a86f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startCoords: {x: 0, y: 0}
-  endCoords: {x: 3, y: 2}
+  startCoords: {x: 3, y: 3}
+  endCoords: {x: 1, y: 0}
 --- !u!1001 &177807408
 PrefabInstance:
   m_ObjectHideFlags: 0

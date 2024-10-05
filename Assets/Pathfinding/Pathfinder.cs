@@ -39,8 +39,13 @@ public class Pathfinder : MonoBehaviour
 
     public List<Node> GetNewPath()
     {
+       return GetNewPath(startCoords);
+    }
+
+     public List<Node> GetNewPath(Vector2Int coords)
+    {
         gridManager.ResetNodes();
-        BreadthFirstSearch();
+        BreadthFirstSearch(coords);
         return CreatePath();
     }
 
@@ -69,7 +74,7 @@ public class Pathfinder : MonoBehaviour
         }
     }
 
-    void BreadthFirstSearch()
+    void BreadthFirstSearch(Vector2Int coords)
     {
         startNode.isNavigable = true;
         endNode.isNavigable = true;
@@ -79,8 +84,8 @@ public class Pathfinder : MonoBehaviour
 
         bool isRunning = true;
 
-        worldNodes.Enqueue(startNode);
-        reachedNodes.Add(startCoords, startNode);
+        worldNodes.Enqueue(grid[coords]);
+        reachedNodes.Add(coords, grid[coords]);
 
         while(worldNodes.Count >0 && isRunning)
         {
@@ -133,7 +138,7 @@ public class Pathfinder : MonoBehaviour
 
     public void NotifyReceivers()
     {
-        BroadcastMessage("RecalcPath", SendMessageOptions.DontRequireReceiver);
+        BroadcastMessage("RecalcPath",false, SendMessageOptions.DontRequireReceiver);
     }
 
 }

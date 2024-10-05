@@ -80,6 +80,7 @@ public class NavigateLabel : MonoBehaviour
     void DisplayCoordsOnTile()
     {   
         if(gridManager == null) { return; }
+        
         coords.x = Mathf.RoundToInt((transform.parent.position.x) / gridManager.UnityGridSize); 
         coords.y = Mathf.RoundToInt((transform.parent.position.z) / gridManager.UnityGridSize);
 

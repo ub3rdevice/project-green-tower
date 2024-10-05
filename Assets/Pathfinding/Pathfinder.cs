@@ -6,7 +6,9 @@ using UnityEngine;
 public class Pathfinder : MonoBehaviour
 {
     [SerializeField] Vector2Int startCoords;
+    public Vector2Int StartCoords { get { return startCoords; } }
     [SerializeField] Vector2Int endCoords;
+    public Vector2Int EndCoords { get { return endCoords; } }
 
     Node startNode;
     Node endNode;
@@ -25,13 +27,13 @@ public class Pathfinder : MonoBehaviour
         if(gridManager != null)
         {
             grid = gridManager.Grid;
+            startNode = grid[startCoords];
+            endNode = grid[endCoords];
         }
     }
 
     void Start()
     {
-        startNode = gridManager.Grid[startCoords];
-        endNode = gridManager.Grid[endCoords];
         GetNewPath();
     }
 
@@ -69,7 +71,9 @@ public class Pathfinder : MonoBehaviour
 
     void BreadthFirstSearch()
     {
-
+        startNode.isNavigable = true;
+        endNode.isNavigable = true;
+        
         worldNodes.Clear();
         reachedNodes.Clear();
 

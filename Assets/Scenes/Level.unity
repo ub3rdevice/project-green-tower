@@ -21132,7 +21132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5665155559987799587, guid: d8093d1d63003364ebd27e764569be77, type: 3}
       propertyPath: poolSize
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5665155559987799587, guid: d8093d1d63003364ebd27e764569be77, type: 3}
       propertyPath: spawnDelayTimer

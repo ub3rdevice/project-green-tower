@@ -78,9 +78,10 @@ public class NavigateLabel : MonoBehaviour
     }
 
     void DisplayCoordsOnTile()
-    {
-        coords.x = Mathf.RoundToInt((transform.parent.position.x) / UnityEditor.EditorSnapSettings.move.x); // UnityEditor methods won't allow build to be compiled, we should either comment these lines or move this script to the "Editor" dir BEFORE compiling the build
-        coords.y = Mathf.RoundToInt((transform.parent.position.z) / UnityEditor.EditorSnapSettings.move.z);
+    {   
+        if(gridManager == null) { return; }
+        coords.x = Mathf.RoundToInt((transform.parent.position.x) / gridManager.UnityGridSize); 
+        coords.y = Mathf.RoundToInt((transform.parent.position.z) / gridManager.UnityGridSize);
 
         //label.text = coords.x + "," + coords.y;
         label.text = coords.x + "," + coords.y;

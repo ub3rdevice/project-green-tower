@@ -37,8 +37,8 @@ public class Tile : MonoBehaviour
         }
     }
 
-   void OnMouseDown() 
-   {
+    void OnMouseDown() 
+    {
         if(gridManager.GetNode(coords).isNavigable && !pathfinder.willBlock(coords))
         {
             bool isSuccessfulPlacement = towerPrefab.CreateTower(towerPrefab, transform.position);
